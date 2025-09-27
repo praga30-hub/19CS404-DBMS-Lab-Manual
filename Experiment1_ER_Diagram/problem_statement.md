@@ -64,32 +64,43 @@ The Central Library wants to manage book lending and cultural events.
 - Overdue fines apply for late returns.
 
 ### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_library.png)
+ 
+<img width="599" height="332" alt="image" src="https://github.com/user-attachments/assets/a79f8002-e4e6-479b-bf38-903b16fb9ee3" />
+
 
 ### Entities and Attributes
 
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+| Entity | Attributes (PK, FK)                   | Notes |
+|--------|---------------------------------------|-------|
+|Member  |Member_ID(PK),Name,Email,Phone         |stores detail of library members     |
+|Book    |Book_ID(PK),Title,Author,Category      |Stores information of books       |
+|Loan    |Loan_Id(PK)Loan_Date, Return_Date, Fine_Amount, Member_ID (FK), Book_ID (FK)        |Records book borrowing and returning       |
+|Event   |Event_ID (PK), Event_Name, Event_Date, Type, Room_ID (FK)| Stores event details      |
+|Speaker |Speaker_ID (PK), Name, Profession, Expertise|Event speaker details|
+|Room    |Room_ID (PK), Room_Name, Capacity, Type|Rooms used for events|
+|Registration|Reg_ID (PK), Member_ID (FK), Event_ID (FK)|Tracks event registrations by members |
 
 ### Relationships and Constraints
 
 | Relationship | Cardinality | Participation | Notes |
 |--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+| Member – Loan             |1 : N            | Member (1,1), Loan (0,N)              |   One member can have many loans; each loan belongs to only one member.    |
+|   Book – Loan           |   1 : N         |   Book (1,1), Loan (0,N)            |  One book can appear in many loans; each loan is for one book.     |
+| Member – Event (via Registration)             |  M : N          |  Member (0,N), Event (0,N)             | Many-to-many resolved through Registration entity.      |
+|  Event – Speaker           |M : N| Event (0,N), Speaker (0,N)|An event can have many speakers, and speakers can participate in multiple events.|
+| Event – Room    |N : 1| Event (1,1), Room (0,N)|Each event takes place in one room; a room can host many events at different times.|
 
 ### Assumptions
-- 
-- 
-- 
-
+- Unique Identifiers: Every entity has a unique primary key (e.g., Member_ID, Book_ID, Loan_ID, Event_ID, Speaker_ID, Room_ID, Reg_ID).
+- One Active Loan per Book: A book can only be borrowed in one loan at a time; it cannot be issued to multiple members simultaneously.
+- Membership Requirement: Only registered members are allowed to borrow books and register for events.
+- Loan Rules: Each loan must be linked to exactly one member and one book.
+- Events and Rooms: An event must take place in exactly one room, but a room can host multiple events (not at the same time).
+- Speakers: A speaker may participate in multiple events, and an event can have multiple speakers.
+- Registrations: Event registrations are done only through members, and one member can register for many events.
+- Fines: Fine_Amount in the Loan entity is calculated based on library policy if the book is returned late.
+- Event Scheduling: Two events cannot be scheduled in the same room at the same time.
+- Data Consistency: Attributes like Email, Phone, and Event_Date are assumed to follow valid formats.
 ---
 
 # Scenario C: Restaurant Table Reservation & Ordering
