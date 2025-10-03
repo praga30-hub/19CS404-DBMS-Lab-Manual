@@ -170,7 +170,7 @@ INSERT INTO Employee (EmployeeID,Name,Position,Department,Salary)VALUES (2,'John
 
 <img width="1191" height="393" alt="image" src="https://github.com/user-attachments/assets/1ca8bbe3-839b-4745-ae9b-0ee42de00c5f" />
 
-**Question 4**
+**Question 4** 
 ---
 create a table named jobs including columns job_id, job_title, min_salary and max_salary, and make sure that, the default value for job_title is blank and min_salary is 8000 and max_salary is NULL will be entered automatically at the time of insertion if no value assigned for the specified columns.
 
