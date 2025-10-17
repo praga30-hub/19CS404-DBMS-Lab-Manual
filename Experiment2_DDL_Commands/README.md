@@ -104,124 +104,207 @@ CREATE TABLE Table_Name (
 ```
 
 **Question 1**
---
--- Paste Question 1 here
+--Create a new table named item with the following specifications and constraints:
+item_id as TEXT and as primary key.
+item_desc as TEXT.
+rate as INTEGER.
+icom_id as TEXT with a length of 4.
+icom_id is a foreign key referencing com_id in the company table.
+The foreign key should cascade updates and deletes.
+item_desc and rate should not accept NULL.
 
 ```sql
--- Paste your SQL code below for Question 1
+create table item(
+item_id TEXT PRIMARY KEY,
+item_desc TEXT NOT NULL,
+rate INTEGER,
+icom_id TEXT(4),
+FOREIGN KEY (icom_id) REFERENCES company(com_id)
+ON UPDATE CASCADE 
+ON DELETE CASCADE
+);
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="1132" height="329" alt="image" src="https://github.com/user-attachments/assets/4b9ec616-2744-4663-bd4c-a41aa4d8967d" />
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+Create a table named Invoices with the following constraints:
+
+InvoiceID as INTEGER should be the primary key.
+InvoiceDate as DATE.
+DueDate as DATE should be greater than the InvoiceDate.
+Amount as REAL should be greater than 0.
 
 ```sql
--- Paste your SQL code below for Question 2
+create table Invoices(
+InvoiceID integer primary key,
+InvoiceDate date,
+DueDate date check(DueDate>InvoiceDate),
+Amount real check(Amount>0)
+);
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="1151" height="266" alt="image" src="https://github.com/user-attachments/assets/0b088726-aa58-4c3c-8a04-2372adcfcda2" />
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+Insert the following employees into the Employee table:
+
+EmployeeID  Name        Position    Department  Salary
+----------  ----------  ----------  ----------  ----------
+2           John Smith  Developer   IT          75000
+3           Anna Bell   Designer    Marketing   68000
 
 ```sql
--- Paste your SQL code below for Question 3
+INSERT INTO Employee (EmployeeID,Name,Position,Department,Salary)VALUES (2,'John Smith','Developer','IT',75000),(3,'Anna Bell','Designer','Marketing',68000)
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1191" height="393" alt="image" src="https://github.com/user-attachments/assets/1ca8bbe3-839b-4745-ae9b-0ee42de00c5f" />
 
-**Question 4**
+**Question 4** 
 ---
--- Paste Question 4 here
+create a table named jobs including columns job_id, job_title, min_salary and max_salary, and make sure that, the default value for job_title is blank and min_salary is 8000 and max_salary is NULL will be entered automatically at the time of insertion if no value assigned for the specified columns.
 
 ```sql
--- Paste your SQL code below for Question 4
+create table jobs(
+job_id integer primary key,
+job_title text default '',
+min_salary integer default 8000,
+max_salary integer default null
+);
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="1144" height="324" alt="image" src="https://github.com/user-attachments/assets/f5270212-b505-4b67-ab2c-eb56bfd29047" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+Create a table named Locations with the following columns:
+
+LocationID as INTEGER
+LocationName as TEXT
+Address as TEXT
 
 ```sql
--- Paste your SQL code below for Question 5
+create table Locations(
+LocationID INTEGER,
+LocationName TEXT,
+Address TEXT
+);
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1161" height="364" alt="image" src="https://github.com/user-attachments/assets/a39292c6-b5de-47ed-bee5-846f0c194f1e" />
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+Insert the following students into the Student_details table:
+RollNo      Name        Gender      Subject     MARKS
+----------  ----------  ----------  ----------  ----------
+202            Ella King         F           Chemistry   87
+203            James Bond   M          Literature    78
 
 ```sql
--- Paste your SQL code below for Question 6
+insert into Student_details(RollNO,Name,Gender,Subject,MARKS) values(202,'Ella King','F','Chemistry',87);
+insert into Student_details values(203,'James Bond','M','Literature',78);
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1154" height="257" alt="image" src="https://github.com/user-attachments/assets/349ebd42-fe5b-4726-905a-b16f9a5b8513" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+Insert all students from Archived_students table into the Student_details table.
+
+cid         name        type        notnull     dflt_value  pk
+----------  ----------  ----------  ----------  ----------  ----------
+0           RollNo      INT           0                       1
+1           Name        VARCHAR(100)  0                       0
+2           Gender      VARCHAR(10)   0                       0
+3           Subject     VARCHAR(50)   0                       0
+4           MARKS       INT           0                       0
 
 ```sql
--- Paste your SQL code below for Question 7
+INSERT INTO Student_details
+SELECT * FROM Archived_students
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="1170" height="276" alt="image" src="https://github.com/user-attachments/assets/b53cd642-7474-4edb-9101-af1c2aee676c" />
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+Write a SQL query to modify the Student_details table by adding a new column Email of type VARCHAR(50) and updating the column MARKS to have a default value of 0.
 
 ```sql
--- Paste your SQL code below for Question 8
+alter table Student_details 
+add column Email VARCHAR(50);
+alter table Student_details
+add column MARKS integer default 0;
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="1153" height="233" alt="image" src="https://github.com/user-attachments/assets/8b82343f-b526-4b3b-aba2-f54ac8ec348b" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+Create a new table named item with the following specifications and constraints:
+item_id as TEXT and as primary key.
+item_desc as TEXT.
+rate as INTEGER.
+icom_id as TEXT with a length of 4.
+icom_id is a foreign key referencing com_id in the company table.
+The foreign key should set NULL on updates and deletes.
+item_desc and rate should not accept NULL.
 
 ```sql
--- Paste your SQL code below for Question 9
+CREATE TABLE item(
+item_id TEXT PRIMARY KEY,
+item_desc TEXT not null,
+rate INTEGER not null,
+icom_id text check(LENGTH(icom_id)==4),
+FOREIGN KEY (icom_id) REFERENCES company(com_id)
+ON UPDATE SET NULL
+ON DELETE SET NULL
+);
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="1142" height="335" alt="image" src="https://github.com/user-attachments/assets/ffb1b7f4-e1ad-41d0-b264-4c55427c96a7" />
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+Insert a product with ProductID 104, Name Tablet, and Category Electronics into the Products table, where Price and Stock should use default values.
 
 ```sql
--- Paste your SQL code below for Question 10
+INSERT INTO Products(ProductID, Name, Category, Price, Stock) Values(104,'Tablet','Electronics',100,50);
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="1170" height="266" alt="image" src="https://github.com/user-attachments/assets/34dbbdb6-b998-493e-b24a-c7afce3aaf43" />
+
 
 
 ## RESULT
