@@ -358,7 +358,8 @@ select category_id, COUNT(*) AS COUNT From Products WHERE category_id >2 GROUP B
 
 **Output:**
 
-![Uploading image.png…]()
+<img width="622" height="322" alt="image" src="https://github.com/user-attachments/assets/e673453a-f0ba-44bb-a6b8-745dc0483e74" />
+
 
 
 
