@@ -38,123 +38,240 @@ DROP VIEW view_name;
 
 **Question 1**
 --
--- Paste Question 1 here
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose salary is LESS than $2500.
+
+Sample table: CUSTOMERS
+
+ID          NAME        AGE         ADDRESS     SALARY
+----------  ----------  ----------  ----------  ----------
+
+1          Ramesh     32              Ahmedabad     2000
+2          Khilan        25              Delhi                 1500
+3          Kaushik      23              Kota                  2000
+4          Chaitali       25             Mumbai            6500
+5          Hardik        27              Bhopal              8500
+6          Komal         22              Hyderabad       4500
+
+7           Muffy          24              Indore            10000
 
 ```sql
--- Paste your SQL code below for Question 1
+SELECT* FROM CUSTOMERS WHERE SALARY<2500;
 ```
 
 **Output:**
+<img width="872" height="545" alt="image" src="https://github.com/user-attachments/assets/408a2505-8f46-48cd-8b03-bb5cf3933b5a" />
 
-![Output1](output.png)
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose salary is EQUAL TO $1500.
+
+Sample table: CUSTOMERS
+
+ID          NAME        AGE         ADDRESS     SALARY
+----------  ----------  ----------  ----------  ----------
+
+1          Ramesh     32              Ahmedabad     2000
+2          Khilan        25              Delhi                 1500
+3          Kaushik      23              Kota                  2000
+4          Chaitali       25             Mumbai            6500
+5          Hardik        27              Bhopal              8500
+6          Komal         22              Hyderabad       4500
+
+7           Muffy          24              Indore            10000
 
 ```sql
--- Paste your SQL code below for Question 2
+SELECT* FROM CUSTOMERS WHERE SALARY=1500;
 ```
 
 **Output:**
+<img width="853" height="419" alt="image" src="https://github.com/user-attachments/assets/554b3886-5470-4344-a3a9-2d7867c0349d" />
 
-![Output2](output.png)
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+Write a SQL query to Retrieve the names and cities of customers who have the same city as customers with IDs 3 and 7
+
+SAMPLE TABLE: customer
+
+name             type
+---------------  ---------------
+id               INTEGER
+name             TEXT
+city             TEXT
+email            TEXT
+phone            INTEGER
 
 ```sql
--- Paste your SQL code below for Question 3
+SELECT name,city FROM customer WHERE city IN(SELECT city FROM customer WHERE id IN(3,7));
+
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="830" height="531" alt="image" src="https://github.com/user-attachments/assets/8d1b67ee-68fc-43b2-a891-0a136a0e5ed6" />
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+Write a SQL query to Retrieve the medications with dosages equal to the highest dosage
+
+Table Name: Medications (attributes: medication_id, medication_name, dosage)
+
+
+
+For example:
 
 ```sql
--- Paste your SQL code below for Question 4
+SELECT* FROM Medications WHERE dosage IN (SELECT MAX(dosage) FROM Medications);
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="907" height="483" alt="image" src="https://github.com/user-attachments/assets/425ba331-f951-4764-9ee5-fe6162c1a809" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose Address as Delhi and age below 30
+
+Sample table: CUSTOMERS
+
+ID          NAME        AGE         ADDRESS     SALARY
+----------  ----------  ----------  ----------  ----------
+
+1          Ramesh     32              Ahmedabad     2000
+2          Khilan        25              Delhi                 1500
+3          Kaushik      23              Kota                  2000
+4          Chaitali       25             Mumbai            6500
+5          Hardik        27              Bhopal              8500
+6          Komal         22              Hyderabad       4500
+
+7           Muffy          24              Indore            10000
 
 ```sql
--- Paste your SQL code below for Question 5
+SELECT* FROM CUSTOMERS WHERE ID IN(SELECT ID FROM CUSTOMERS WHERE ADDRESS="Delhi" AND age<30);
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="821" height="455" alt="image" src="https://github.com/user-attachments/assets/eda4eab2-fa5d-47cd-a3a7-f72fdae8ac8f" />
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+Write a SQL query that retrieves the names of students and their corresponding grades, where the grade is equal to the maximum grade achieved in each subject.
+
+Sample table: GRADES (attributes: student_id, student_name, subject, grade)
+
+
 
 ```sql
--- Paste your SQL code below for Question 6
+SELECT student_name, grade FROM GRADES t1 WHERE grade=(SELECT MAX(grade) FROM GRADES t2 WHERE t2.subject=t1.subject);
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="805" height="505" alt="image" src="https://github.com/user-attachments/assets/fd5d4693-a546-495d-8461-4e3607b5aa1f" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+Write a SQL query that retrieve all the columns from the table "Grades", where the grade is equal to the maximum grade achieved in each subject.
+
+Sample table: GRADES (attributes: student_id, student_name, subject, grade)
+
+
 
 ```sql
--- Paste your SQL code below for Question 7
+SELECT student_id,student_name,subject, grade FROM GRADES t1 WHERE grade=(SELECT MAX(grade) FROM GRADES t2 WHERE t2.subject=t1.subject);
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="889" height="519" alt="image" src="https://github.com/user-attachments/assets/4b44cd5a-aec9-4617-a452-ceb90048049c" />
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+Write a SQL query to List departments with names longer than the average length
+
+Departments Table (attributes: department_id, department_name)
+
+
 
 ```sql
--- Paste your SQL code below for Question 8
+SELECT* FROM Departments WHERE LENGTH(department_name)>(SELECT AVG(LENGTH(department_name)) FROM Departments);
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="707" height="457" alt="image" src="https://github.com/user-attachments/assets/1577b903-8480-497f-b4f3-5e11cfe683ca" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+From the following tables write a SQL query to find all orders generated by London-based salespeople. Return ord_no, purch_amt, ord_date, customer_id, salesman_id.
+
+salesman table
+
+name             type
+---------------  ---------------
+salesman_id      numeric(5)
+name                 varchar(30)
+city                    varchar(15)
+commission       decimal(5,2)
+
+orders table
+
+name             type
+---------------  --------
+order_no         int
+purch_amt        real
+order_date       text
+customer_id      int
+salesman_id      int
 
 ```sql
--- Paste your SQL code below for Question 9
+SELECT o.ord_no, o.purch_amt, o.ord_date, o.customer_id, o.salesman_id
+FROM orders o
+JOIN salesman s ON o.salesman_id = s.salesman_id
+WHERE s.city = 'London';
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="882" height="487" alt="image" src="https://github.com/user-attachments/assets/d168984f-8765-43c5-8277-c1ba441156e3" />
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose AGE is LESS than $30
+
+Sample table: CUSTOMERS
+
+ID          NAME        AGE         ADDRESS     SALARY
+----------  ----------  ----------  ----------  ----------
+
+1          Ramesh     32              Ahmedabad     2000
+2          Khilan        25              Delhi                 1500
+3          Kaushik      23              Kota                  2000
+4          Chaitali       25             Mumbai            6500
+5          Hardik        27              Bhopal              8500
+6          Komal         22              Hyderabad       4500
+
+7           Muffy          24              Indore            10000
 
 ```sql
--- Paste your SQL code below for Question 10
+SELECT * FROM CUSTOMERS WHERE AGE < 30;
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="844" height="628" alt="image" src="https://github.com/user-attachments/assets/7128efce-0115-4e79-b09b-e196907384a4" />
+
 
 
 ## RESULT
