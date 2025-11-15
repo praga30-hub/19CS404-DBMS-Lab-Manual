@@ -81,7 +81,7 @@ END;
 ```sqlBEGIN
 DECLARE
    CURSOR emp_cur IS
-      SELECT emp_name, designation FROM employees1;
+      SELECT emp_name, designation FROM employees1;   
    v_name employees1.emp_name%TYPE;
    v_desg employees1.designation%TYPE;
 BEGIN
