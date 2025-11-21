@@ -10,7 +10,7 @@ To write and execute PL/SQL trigger programs for automating actions in response 
 A **trigger** is a stored PL/SQL block that is automatically executed or fired when a specified event occurs on a table or view. Triggers can be used for enforcing business rules, auditing changes, or automatic updates.
 
 ### Types of Triggers:
-- **Before Trigger**: Executes before the operation (INSERT, UPDATE, DELETE).
+- **Before Trigger**: Executes before the operation (INSERT, UPDATE, DELETE).   
 - **After Trigger**: Executes after the operation.
 - **Row-level Trigger**: Executes for each affected row.
 - **Statement-level Trigger**: Executes once for the triggering statement.
@@ -75,3 +75,4 @@ END;
 
 ## RESULT
 Thus, the PL/SQL trigger programs were written and executed successfully.
+
